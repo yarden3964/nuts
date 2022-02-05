@@ -1,0 +1,87 @@
+﻿<!doctype html>
+<html lang="he">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>שם המשחק</title>
+    <meta name="description" content="name of game" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="names" />
+
+    <!-- CSS -->
+
+    <link href="styles/myStyle.css" rel="stylesheet" />
+
+    <!-- Scripts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="icon" type="favicon" href="imagesHTML/favicon.png">
+    <!--jQuery library-->
+    <script src="jScripts/jquery-1.12.0.min.js"></script>
+    <!--הקוד שמפעיל את תפריט הניווט-->
+    <script src="jScripts/myScript.js"></script>
+
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <!--קישור לדף עצמו כדי להתחיל את המשחק מחדש בלחיצה על הלוגו-->
+            <a href="index.html">
+                <img id="logo" src="imagesHTML/logo.png"/> <!--הלוגו של המשחק שלכם-->
+                <p>nut's</p>
+            </a>
+            <!--תפריט הניווט בראש העמוד-->
+            <nav>
+                <ul>
+                    <li><a class="about">אודות</a></li>
+                    <li><a class="howToPlay">איך לשחק?</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- אודות -->
+        <div id="aboutDiv" class="popUp bounceInDown hide">
+            <a class="closeAbout"><img src="imagesHTML/X.png" id="xbtn" /></a>
+            <h2>אודות</h2>
+            <img src="imagesHTML/logo.png" />
+            <p>
+                אפיון ופיתוח: ירדן מזרחי, עירית פלו פינדריק ושירן דדון
+            </p>
+            <p>
+                אופיין ופותח במסגרת פרויקט בקורסים: <br />
+                סביבות לימוד אינטראקטיביות 1 + תכנות אינטראקטיבי 1<br />
+                <br />
+                תשפ"ב
+            </p>
+            <a href="https://www.hit.ac.il/telem/overview">
+                <img src="imagesHTML/hitLogo.jpg" /><br />
+                הפקולטה לטכנולוגיות למידה
+            </a>
+        </div>
+        <!-- איך משחקים -->
+        <div id="howToPlayDiv" class="popUp bounceInDown hide">
+            <a class="closeHowToPlay"><img src="imagesHTML/X.png" id="xbtn" /></a>
+            <h2>
+                אז איך לשחק?
+            </h2>
+            <p>עזרו לסאני הסנאי לאגור מספיק אגוזים לחורף</p>
+            <p class="b">איך לעשות את זה?</p>
+            <p>על העץ נמצאים אגוזים רבים חלקם טובים וחלקם מקולקלים <br /> לחצו על כל האגוזים הטובים ולאחר מכן לחצו על כפתור "בדקו"</p>
+            <p class="b">שימו לב</p>
+            <p>כדאי למהר לפני שיגיע החורף</p>
+
+
+
+        </div>
+
+        <div id="gameArea" class="">
+            <!--src = הקישור של דף המשחק שלכם (לא קובץ האנימייט)-->
+            <iframe id="gameIframe" src="Nuts.html" frameBorder="0" allowfullscreen="">Browser not compatible.</iframe>
+        </div>
+    </div>
+</body>
+
+</html>
