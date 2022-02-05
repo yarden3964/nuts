@@ -56,7 +56,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,2913,175);
 
 
 
-(lib.CachedBmp_51 = function() {
+(lib.CachedBmp_52 = function() {
 	this.initialize(ss["Nuts_atlas_3"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
@@ -2546,7 +2546,7 @@ if (reversed == null) { reversed = false; }
 	this.instance_3 = new lib.squirrel();
 	this.instance_3.setTransform(350.05,476.4,1,1,0,0,180,55.9,99.3);
 
-	this.instance_4 = new lib.CachedBmp_51();
+	this.instance_4 = new lib.CachedBmp_52();
 	this.instance_4.setTransform(255.4,144.25,0.5,0.5);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape},{t:this.instance},{t:this.header,p:{text:"נגמר הזמן!"}},{t:this.txt,p:{text:"כדאי למהר החורף מתקרב",lineWidth:465}},{t:this.continueBtn}]}).to({state:[{t:this.instance_4},{t:this.header,p:{text:"הפסקה!"}},{t:this.txt,p:{text:"התעייפתי קצת\nעוד מעט נמשיך לקטוף אגוזים",lineWidth:522}},{t:this.continueBtn},{t:this.instance_3},{t:this.instance_2},{t:this.instance_1}]},1).wait(1));
@@ -3146,6 +3146,7 @@ if (reversed == null) { reversed = false; }
 			var progressBar = new lib.progressBar()
 			progressBar.x = 20
 			progressBar.y = 430
+		progressBar.name = "progressBar"
 			stage.addChild(progressBar)
 			progressBar.countQ.text = gamelength + " / " + corrects;
 		
@@ -3573,6 +3574,28 @@ if (reversed == null) { reversed = false; }
 				var instance = createjs.Sound.play("YES")
 				//חישוב ניקוד על פי הנוסחא 
 				grade += Math.floor(100 / ((game.length * (game[qnum][0][2] + 1))));
+		
+		gamelength = game.length		
+			var progressBar = stage.getChildByName("progressBar")
+			progressBar.countQ.text = gamelength + " / " + corrects;
+		
+			var progressHeight = (190 / gamelength) * corrects //*corrects
+			var progress = new createjs.Shape(new createjs.Graphics().f("#9cbb49").drawRect(37.6, 200 - progressHeight, 18, progressHeight));
+		
+			progressBar.addChild(progress)
+		
+			for (var v = 0; v < corrects; v++) {
+				var place = v % 5
+				var row = Math.floor(v / 5)
+				var nut = new lib.progressNut();
+				nut.y = 180 - row * 20;
+				nut.x = 101 - place * 13
+				progressBar.addChild(nut)
+			}
+		
+				
+				
+				
 			} else { //טעה
 				totalWrong++
 				var instance = createjs.Sound.play("NO")
@@ -3694,17 +3717,17 @@ lib.properties = {
 	color: "#CBFFFD",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/CachedBmp_48.png?1644093276081", id:"CachedBmp_48"},
-		{src:"images/CachedBmp_45.png?1644093276081", id:"CachedBmp_45"},
-		{src:"images/CachedBmp_44.png?1644093276081", id:"CachedBmp_44"},
-		{src:"images/CachedBmp_42.png?1644093276081", id:"CachedBmp_42"},
-		{src:"images/CachedBmp_1.png?1644093276081", id:"CachedBmp_1"},
-		{src:"images/Nuts_atlas_1.png?1644093276003", id:"Nuts_atlas_1"},
-		{src:"images/Nuts_atlas_2.png?1644093276004", id:"Nuts_atlas_2"},
-		{src:"images/Nuts_atlas_3.png?1644093276004", id:"Nuts_atlas_3"},
-		{src:"https://code.jquery.com/jquery-3.4.1.min.js?1644093276081", id:"lib/jquery-3.4.1.min.js"},
-		{src:"components/sdk/anwidget.js?1644093276081", id:"sdk/anwidget.js"},
-		{src:"components/ui/src/combobox.js?1644093276081", id:"an.ComboBox"}
+		{src:"images/CachedBmp_48.png?1644097044564", id:"CachedBmp_48"},
+		{src:"images/CachedBmp_45.png?1644097044564", id:"CachedBmp_45"},
+		{src:"images/CachedBmp_44.png?1644097044564", id:"CachedBmp_44"},
+		{src:"images/CachedBmp_42.png?1644097044564", id:"CachedBmp_42"},
+		{src:"images/CachedBmp_1.png?1644097044564", id:"CachedBmp_1"},
+		{src:"images/Nuts_atlas_1.png?1644097044489", id:"Nuts_atlas_1"},
+		{src:"images/Nuts_atlas_2.png?1644097044489", id:"Nuts_atlas_2"},
+		{src:"images/Nuts_atlas_3.png?1644097044489", id:"Nuts_atlas_3"},
+		{src:"https://code.jquery.com/jquery-3.4.1.min.js?1644097044564", id:"lib/jquery-3.4.1.min.js"},
+		{src:"components/sdk/anwidget.js?1644097044564", id:"sdk/anwidget.js"},
+		{src:"components/ui/src/combobox.js?1644097044564", id:"an.ComboBox"}
 	],
 	preloads: []
 };
