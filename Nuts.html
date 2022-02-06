@@ -13,10 +13,10 @@
 	<meta name="authoring-tool" content="Adobe_Animate_CC">
 	<title>Nuts</title>
 	<!-- write your code here -->
+
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-
 	<style>
 		#animation_container {
 			position: absolute;
@@ -28,7 +28,58 @@
 		}
 	</style>
 	<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-	<script src="Nuts.js?1644097044597"></script>
+	<script>
+		function LoadGFonts(families, comp) {
+			var lib = comp.getLibrary();
+			var googleObject = { type: "Google", loadedFonts: 0, totalFonts: families.length, callOnLoad: lib.gfontAvailable };
+			for (var i = 0; i < families.length; i++)
+				isFontAvailable(gFontsFamilies[i], googleObject);
+		}
+		function isFontAvailable(font, obj) {
+			var timeOut = 5000;
+			var delay = 200;
+			var interval = 0;
+			var timeElapsed = 0;
+			function checkFont() {
+				var node = document.createElement("span");
+				node.innerHTML = "giItT1WQy@!-/#";
+				node.style.position = "absolute";
+				node.style.left = "-1000px";
+				node.style.top = "-1000px";
+				node.style.fontSize = "300px";
+				node.style.fontFamily = "sans-serif";
+				node.style.fontVariant = "normal";
+				node.style.fontStyle = "normal";
+				node.style.fontWeight = "normal";
+				node.style.letterSpacing = "0";
+				document.body.appendChild(node);
+				var width = node.offsetWidth;
+				node.style.fontFamily = font + "," + node.style.fontFamily;
+				var returnVal = false;
+				if ((node && node.offsetWidth != width) || timeElapsed >= timeOut) {
+					obj.loadedFonts++;
+					if (interval)
+						clearInterval(interval);
+					obj.callOnLoad(font, obj.totalFonts);
+					returnVal = true;
+				}
+				if (node) {
+					node.parentNode.removeChild(node);
+					node = null;
+				}
+				timeElapsed += delay;
+				return returnVal;
+			}
+			if (!checkFont()) {
+				interval = setInterval(checkFont, delay);
+			}
+		}
+	</script>
+	<script>
+		var gFontsFamilies = ["Varela Round"];
+	</script>
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Varela+Round:regular&subset=latin">
+	<script src="Nuts.js?1644147752858"></script>
 	<script>
 		var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
 		function init() {
@@ -37,6 +88,19 @@
 			dom_overlay_container = document.getElementById("dom_overlay_container");
 			var comp = AdobeAn.getComposition("F051DA0CC0522B40965BE824CE9E5A21");
 			var lib = comp.getLibrary();
+			try {
+				if (!(typeof gFontsFamilies === 'undefined' || gFontsFamilies === null))
+					LoadGFonts(gFontsFamilies, comp);
+				if (!(typeof totalTypekitFonts === 'undefined' || totalTypekitFonts === null)) {
+					var typekitObject = { type: 'Typekit', loadedFonts: 0, totalFonts: totalTypekitFonts, callOnLoad: lib.tfontAvailable };
+					Typekit.load({
+						async: true,
+						'fontactive': function (family) {
+							isFontAvailable(family, typekitObject);
+						}
+					});
+				}
+			} catch (e) { };
 			var loader = new createjs.LoadQueue(false);
 			loader.addEventListener("fileload", function (evt) { handleFileLoad(evt, comp) });
 			loader.addEventListener("complete", function (evt) { handleComplete(evt, comp) });
